@@ -56,6 +56,13 @@ def advisor_view_feedback():
     data['view']=res
 
     return render_template("advisor_view_feedback.html",data=data)
+def advisor_view_feedback():
+    data={}
+    qry1="SELECT * FROM feedback INNER JOIN USER ON feedback.sender_id = user.login_id"
+    res=select(qry1)
+    data['view']=res
+
+    return render_template("advisor_view_feedback.html",data=data)
 
 @advisor.route('/advisor_send_rating_and_review',methods=['POST','GET'])
 def advisor_send_rating_and_review():
