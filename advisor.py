@@ -66,6 +66,15 @@ def advisor_send_rating_and_review():
         insert(qry)
         return ("<script>alert('Review Send');window.location='/advisor_send_rating_and_review'</script>")
     return render_template("advisor_send_rating_and_review.html")
+@advisor.route('/advisor_send_rating_and_review',methods=['POST','GET'])
+def advisor_send_rating_and_review():
+    if 'submit' in request.form:
+        rating=request.form['rating']
+        review=request.form['review']
+        qry="insert into rating values(null,'%s','%s','%s',curdate())"%(session['log'],rating,review)
+        insert(qry)
+        return ("<script>alert('Review Send');window.location='/advisor_send_rating_and_review'</script>")
+    return render_template("advisor_send_rating_and_review.html")
 
 @advisor.route('/advisor_send_complaint',methods=['POST','GET'])
 def advisor_send_complaint():
