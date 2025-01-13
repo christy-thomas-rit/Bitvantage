@@ -104,29 +104,6 @@ def advisor_view_paid_users():
     data['view']=res
 
     return render_template("advisor_view_paid_users.html",data=data)
-@advisor.route('/advisor_offer_inv_reccomendation',methods=['POST','GET'])
-def advisor_offer_inv_reccomendation():
-    if 'submit' in request.form:
-        video=request.files['video']
-        title=request.form['title']
-        description=request.form['description']
-
-        path='static/'+str(uuid.uuid4())+video.filename
-        video.save(path)
-
-        qry="insert into inv_recomendations values(null,'%s','%s','%s','%s',curdate())"%(session['advisor'],path,title,description)
-        insert(qry)
-        return ("<script>alert('Invest Recommendation Added');window.location='/advisor_offer_inv_reccomendation'</script>")
-    return render_template("advisor_offer_inv_reccomendation.html")
-
-@advisor.route('/advisor_view_paid_users')
-def advisor_view_paid_users():
-    data={}
-    qry1="select * from payment inner join user using(user_id) where status='paid' and advisor_id='%s'"%(session['advisor'])
-    res=select(qry1)
-    data['view']=res
-
-    return render_template("advisor_view_paid_users.html",data=data)
 
 @advisor.route('/advisor_view_message',methods=['POST','GET'])
 def advisor_view_message():
