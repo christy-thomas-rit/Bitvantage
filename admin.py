@@ -114,6 +114,7 @@ def admin_view_rating():
         data['view'] = ratings
 
     return render_template("admin_view_rating.html", data=data)
+    return render_template("admin_view_rating.html", data=data)
 
 
 
