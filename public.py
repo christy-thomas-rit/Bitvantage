@@ -41,38 +41,6 @@ def login():
 
 
     return render_template("login.html")
-@public.route('/login',methods=['get','post'])
-def login():
-    if 'submit' in request.form:
-        username=request.form['username']
-        password=request.form['password']
-
-        qry="select * from login where username='%s' and password='%s'"%(username,password)
-        res=select(qry)
-        print(res)
-
-        if res:
-            session['log']=res[0]['login_id']
-
-            if res[0]['usertype']=='admin':
-
-                return ("<script>alert('login successfull');window.location='/admin_home'</script>")
-            
-            if res[0]['usertype']=='advisor':
-                qry1="select * from advisor where login_id='%s'"%(session['log'])
-                res1=select(qry1)
-                if res1:
-                    session['advisor']=res1[0]['advisor_id']
-                return ("<script>alert('login successfull');window.location='/advisor_home'</script>")
-            else:
-                return ("<script>alert('admin not verified');window.location='/login'</script>")
-            
-            
-        else:
-            return ("<script>alert('invalid username or password');window.location='/login'</script>")
-
-
-    return render_template("login.html")
 
 @public.route('/advisor_reg',methods=['POST','GET'])
 def advisor_reg():
