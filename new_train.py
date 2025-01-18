@@ -65,6 +65,18 @@ def build_model(X_train, y_train):
     model.fit(X_train, y_train, epochs=5, batch_size=32)
     
     return model
+def build_model(X_train, y_train):
+    model = Sequential()
+    model.add(LSTM(units=50, return_sequences=True, input_shape=(X_train.shape[1], 1)))
+    model.add(Dropout(0.2))  # Dropout to prevent overfitting
+    model.add(LSTM(units=50, return_sequences=False))
+    model.add(Dropout(0.2))
+    model.add(Dense(units=1))  # Output layer for price prediction
+    
+    model.compile(optimizer='adam', loss='mean_squared_error')
+    model.fit(X_train, y_train, epochs=5, batch_size=32)
+    
+    return model
 
 # Forecast Bitcoin price for a given date
 def forecast(model, future_date, scaler, X_full):
