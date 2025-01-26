@@ -1,0 +1,102 @@
+{% include 'advisor_header.html' %}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Complaint Form -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">Submit a Complaint</h3>
+                    <form action="" method="post">
+                        <div class="mb-3">
+                            <label for="title" class="form-label"><strong>Title</strong></label>
+                            <input type="text" id="title" name="title" class="form-control" placeholder="Enter title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label"><strong>Description</strong></label>
+                            <textarea id="description" name="description" class="form-control" rows="4" placeholder="Describe your complaint" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" name="submit" class="btn btn-warning w-50">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Complaint Table -->
+            <!-- <div class="card shadow-sm"> -->
+                <div class="card-body">
+                    <h3 class="text-center mb-4">Complaints</h3>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Reply</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in data['view'] %}
+                            <tr>
+                                <td>{{i['title']}}</td>
+                                <td>{{i['description']}}</td>
+                                <td>{{i['reply']}}</td>
+                                <td>{{i['date']}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+
+<style>
+.container {
+    max-width: 1200px;
+}
+
+.card {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.table thead {
+    background-color: #a2c4eb;
+    font-weight: bold;
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-center {
+    text-align: center;
+}
+
+textarea {
+    resize: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+</style>
+<br><br><br>
+
+{% include 'footer.html' %}

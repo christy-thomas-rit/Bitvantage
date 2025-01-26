@@ -1,0 +1,83 @@
+{% include 'public_header.html' %}
+
+<!-- Include Bootstrap CSS -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4" style="max-width: 600px; margin: auto; border-radius: 10px;">
+        <h3 class="text-center mb-4" style="color: #333;">Register Here.....</h3>
+        <form action="" method="post" enctype="multipart/form-data" id="registrationForm">
+            <!-- Name Field -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <!-- Place Field -->
+            <div class="mb-3">
+                <label for="place" class="form-label">Place</label>
+                <input type="text" id="place" name="place" class="form-control" placeholder="Enter your place" required>
+            </div>
+            <!-- Phone Field -->
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required pattern="^\+?[0-9]\d{1,14}$" title="Phone number should be valid with country code (e.g., +123456789)">
+            </div>
+            <!-- Email Field -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <!-- Work Experience Field -->
+            <div class="mb-3">
+                <label for="work_exp" class="form-label">Work Experience</label>
+                <input type="text" id="work_exp" name="work_exp" class="form-control" placeholder="Enter your work experience" required>
+            </div>
+            <!-- Professional Certificate Field -->
+            <div class="mb-3">
+                <label for="prof_certi" class="form-label">Professional Certificate</label>
+                <input type="file" id="prof_certi" name="prof_certi" class="form-control">
+            </div>
+            <!-- Username Field -->
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Choose a username" required>
+            </div>
+            <!-- Password Field -->
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required minlength="8" title="Password should be at least 8 characters long">
+            </div>
+            <!-- Submit Button -->
+            <div class="d-grid justify-content-center">
+                <button type="submit" name="submit" class="btn btn-warning">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+// JavaScript for additional validation (optional)
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    // Validate phone number format
+    const phone = document.getElementById('phone').value;
+    const phonePattern = /^\+?[1-9]\d{1,14}$/;
+    if (!phonePattern.test(phone)) {
+        alert('Please enter a valid phone number with country code.');
+        event.preventDefault(); // Prevent form submission
+        return false;
+    }
+
+    // Validate password strength (basic check for numbers and letters)
+    const password = document.getElementById('password').value;
+    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; // At least 8 chars, letters & numbers
+    if (!passwordPattern.test(password)) {
+        alert('Password must be at least 8 characters long and contain both letters and numbers.');
+        event.preventDefault();
+        return false;
+    }
+});
+</script>
+
+<br><br><br>
+
+{% include 'footer.html' %}

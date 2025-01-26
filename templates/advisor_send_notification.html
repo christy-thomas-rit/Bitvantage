@@ -1,0 +1,57 @@
+{% include 'advisor_header.html' %}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">Send Notification</h3>
+                    <form action="" method="post">
+                        <div class="mb-3">
+                            <!-- <label for="noti" class="form-label"><strong>Notification</strong></label> -->
+                            <input type="text" id="noti" name="noti" class="form-control" placeholder="Enter notification" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" name="submit" class="btn btn-warning w-50">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.container {
+    max-width: 1200px;
+}
+
+.card {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+</style>
+<br><br><br><br>
+
+{% include 'footer.html' %}

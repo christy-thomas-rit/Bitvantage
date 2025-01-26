@@ -1,0 +1,72 @@
+{% include 'admin_header.html' %}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Ratings and Reviews</h2>
+    <div class="row g-4">
+        {% for i in data['view'] %}
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ i['sender_name'] }}</h5>
+                    <p class="text-warning mb-1">
+                        {% for star in range(0, i['rating']) %}
+                        &#9733; <!-- Full star symbol -->
+                        {% endfor %}
+                        {% for star in range(i['rating'], 5) %}
+                        &#9734; <!-- Empty star symbol for ratings less than 5 -->
+                        {% endfor %}
+                    </p>
+                    <p class="card-text text-muted">
+                        <strong>Review:</strong> {{ i['review'] }}
+                    </p>
+                    <p class="text-end text-secondary">
+                        <small>{{ i['date'] }}</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.card {
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    justify-content: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-weight: bold;
+    color: #333;
+}
+
+.text-warning {
+    font-size: 1.2em;
+}
+
+.card-text {
+    font-size: 0.9em;
+}
+
+.text-end {
+    font-size: 0.8em;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-body p {
+    margin-bottom: 0.5rem;
+}
+
+</style>
+<br><br><br>
+
+{% include 'footer.html' %}

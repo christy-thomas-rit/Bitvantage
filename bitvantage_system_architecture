@@ -1,0 +1,29 @@
+digraph "BitVantage System Architecture" {
+	graph [fontcolor="#2D3436" fontname="Sans-Serif" fontsize=15 label="BitVantage System Architecture" nodesep=0.60 pad=2.0 rankdir=TB ranksep=0.75 splines=ortho]
+	node [fixedsize=true fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 height=1.4 imagescale=true labelloc=b shape=box style=rounded width=1.4]
+	edge [color="#7B8894"]
+	"8259a87f5b8444f192f47f760532d4e8" [label=User height=1.9 image="/Users/christythomas/Downloads/RIT_COLLEGE_BitVantage/.venv/lib/python3.9/site-packages/resources/onprem/client/users.png" shape=none]
+	dd777170086b448595580558bb0797de [label=Admin height=1.9 image="/Users/christythomas/Downloads/RIT_COLLEGE_BitVantage/.venv/lib/python3.9/site-packages/resources/onprem/client/users.png" shape=none]
+	"7b50b7f5997c4efbb977e9a95db67664" [label=Advisor height=1.9 image="/Users/christythomas/Downloads/RIT_COLLEGE_BitVantage/.venv/lib/python3.9/site-packages/resources/onprem/client/users.png" shape=none]
+	subgraph "cluster_Machine Learning System" {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label="Machine Learning System" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		c7422d1ee4494760b4b0bdc78e14fcab [label="ML Model" height=1.9 image="/Users/christythomas/Downloads/RIT_COLLEGE_BitVantage/.venv/lib/python3.9/site-packages/resources/aws/ml/sagemaker.png" shape=none]
+	}
+	subgraph cluster_Databases {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=Databases labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		ca9102dd20174b539252e8b5ae72147c [label="User Information DB" height=1.9 image="/Users/christythomas/Downloads/RIT_COLLEGE_BitVantage/.venv/lib/python3.9/site-packages/resources/generic/database/sql.png" shape=none]
+		"603d7fef82a043a591cab4c28d82993b" [label="Payment Records DB" height=1.9 image="/Users/christythomas/Downloads/RIT_COLLEGE_BitVantage/.venv/lib/python3.9/site-packages/resources/generic/database/sql.png" shape=none]
+		"4648a441e4e944f685e640d0e26e08c6" [label="Feedback DB" height=1.9 image="/Users/christythomas/Downloads/RIT_COLLEGE_BitVantage/.venv/lib/python3.9/site-packages/resources/generic/database/sql.png" shape=none]
+	}
+	dd777170086b448595580558bb0797de -> ca9102dd20174b539252e8b5ae72147c [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	dd777170086b448595580558bb0797de -> c7422d1ee4494760b4b0bdc78e14fcab [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"8259a87f5b8444f192f47f760532d4e8" -> c7422d1ee4494760b4b0bdc78e14fcab [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"8259a87f5b8444f192f47f760532d4e8" -> ca9102dd20174b539252e8b5ae72147c [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"8259a87f5b8444f192f47f760532d4e8" -> "603d7fef82a043a591cab4c28d82993b" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"8259a87f5b8444f192f47f760532d4e8" -> "4648a441e4e944f685e640d0e26e08c6" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"7b50b7f5997c4efbb977e9a95db67664" -> c7422d1ee4494760b4b0bdc78e14fcab [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"7b50b7f5997c4efbb977e9a95db67664" -> "8259a87f5b8444f192f47f760532d4e8" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	c7422d1ee4494760b4b0bdc78e14fcab -> ca9102dd20174b539252e8b5ae72147c [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	c7422d1ee4494760b4b0bdc78e14fcab -> "603d7fef82a043a591cab4c28d82993b" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	c7422d1ee4494760b4b0bdc78e14fcab -> "4648a441e4e944f685e640d0e26e08c6" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+}

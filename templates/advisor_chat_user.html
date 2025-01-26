@@ -1,0 +1,78 @@
+
+{% include "advisor_header.html" %}
+    <!-- <link rel="stylesheet" href="static/assets/css/chat.css"> -->
+    <link rel="stylesheet" href="static/css/chat.css">
+    
+
+    <div class="container-fluid content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">Chat</div>
+                    <div class="card-body height3">
+                        <ul class="chat-list">
+                            {% for i in data['view'] %}
+                            {% if i['sender_type'] == 'advisor' %}
+                            <li class="out">
+                                <div class="chat-img">
+                                    <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                                </div>
+                                <div class="chat-body">
+                                    <div class="chat-message">
+                                        <h5>{{i['message']}}</h5>
+                                        <p>{{i['time']}}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            {% elif i['sender_type'] == 'user' %}
+                            <li class="in">
+                                <div class="chat-img">
+                                    <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                </div>
+                                <div class="chat-body">
+                                    <div class="chat-message">
+                                        <h5>{{i['message']}}</h5>
+                                        <p>{{i['time']}}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <form action="" method="post" style="float: right;">
+                            <table>
+                                <tr>
+                                    <td><input type="text" name="message" ></td>
+                                    <td><input type="submit" name="submit" value="send"></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+    {% include "footer.html" %}
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+{% include 'advisor_header.html' %}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">User Feedback</h2>
+    <div class="row g-4 justify-content-center">
+        {% for i in data['view'] %}
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ i['name'] }}</h5>
+                    <p class="card-text">
+                        <strong>Feedback:</strong> {{ i['feedback'] }}
+                    </p>
+                    <p class="text-muted">
+                        <strong>Date:</strong> {{ i['date'] }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.container {
+    max-width: 1200px;
+}
+
+.card {
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-weight: bold;
+    color: #333;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.text-center {
+    font-weight: bold;
+    color: #444;
+}
+
+.text-muted {
+    font-size: 0.9rem;
+    color: #666;
+}
+</style>
+<br><br><br><br>
+{% include 'footer.html' %}

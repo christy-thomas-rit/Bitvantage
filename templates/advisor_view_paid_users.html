@@ -1,0 +1,74 @@
+{% include 'advisor_header.html' %}
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="w-100">
+        <h2 class="text-center mb-4">Paid Users</h2>
+        <div class="row g-4 justify-content-center">
+            {% for i in data['view'] %}
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i['name'] }}</h5>
+                        <p class="mb-2"><strong>Phone:</strong> {{ i['phone'] }}</p>
+                        <p class="mb-2"><strong>Gender:</strong> {{ i['gender'] }}</p>
+                        <p class="mb-2"><strong>Email:</strong> {{ i['email'] }}</p>
+                        <p class="mb-3"><strong>Place:</strong> {{ i['place'] }}</p>
+                        <a href="/advisor_view_message" class="btn btn-warning btn-sm">Chat</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Additional CSS -->
+<style>
+.container {
+    max-width: 1200px;
+}
+
+.card {
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-weight: bold;
+    color: #333;
+}
+
+.container h2 {
+    font-weight: bold;
+    color: #444;
+}
+
+.btn {
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 5px 15px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.min-vh-100 {
+    min-height: 100vh;
+}
+</style>
+
+
+
+{% include 'footer.html' %}
