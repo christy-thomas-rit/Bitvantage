@@ -24,6 +24,19 @@ def fetch_bitcoin_data():
     
     df.to_csv('bitcoin_data.csv', index=False)
     return df
+def fetch_bitcoin_data():
+    data = cryptocompare.get_historical_price_day(
+        'BTC', 
+        toTs=datetime.now(), 
+        limit=1095  # Increase to 3 years of data
+    )
+    
+    df = pd.DataFrame(data)
+    df['time'] = pd.to_datetime(df['time'], unit='s', errors='coerce')
+    df = df[['time', 'close']]
+    
+    df.to_csv('bitcoin_data.csv', index=False)
+    return df
 
 # Preprocess the data (feature scaling, time series preparation)
 def preprocess_data():
