@@ -105,6 +105,15 @@ def advisor_view_paid_users():
 
     return render_template("advisor_view_paid_users.html",data=data)
 
+@advisor.route('/advisor_view_paid_users')
+def advisor_view_paid_users():
+    data={}
+    qry1="select * from payment inner join user using(user_id) where status='paid' and advisor_id='%s'"%(session['advisor'])
+    res=select(qry1)
+    data['view']=res
+
+    return render_template("advisor_view_paid_users.html",data=data)
+
 @advisor.route('/advisor_view_message',methods=['POST','GET'])
 def advisor_view_message():
     data={}
