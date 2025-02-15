@@ -163,6 +163,12 @@ file_configs = [
     {'file': 'bitcoin_4hr.csv', 'model': 'model_4hr.h5', 'scaler': 'scaler_4hr.save'},
     {'file': 'bitcoin_15min.csv', 'model': 'model_15min.h5', 'scaler': 'scaler_15min.save'}
 ]
+# Predict for 1-hour, 4-hour, and 15-minute intervals
+file_configs = [
+    {'file': 'bitcoin_1hr.csv', 'model': 'model_1hr.h5', 'scaler': 'scaler_1hr.save'},
+    {'file': 'bitcoin_4hr.csv', 'model': 'model_4hr.h5', 'scaler': 'scaler_4hr.save'},
+    {'file': 'bitcoin_15min.csv', 'model': 'model_15min.h5', 'scaler': 'scaler_15min.save'}
+]
 
 for config in file_configs:
     future_prices = forecast_future(config['file'], config['model'], config['scaler'], days_ahead=30)
