@@ -117,18 +117,6 @@ def advisor_view_message():
         res2=select(qry2)
         if res2:
             data['view']=res2
-@advisor.route('/advisor_view_message',methods=['POST','GET'])
-def advisor_view_message():
-    data={}
-    qry="select * from advisor inner join chat on advisor.advisor_id = chat.receiver_id where advisor_id='%s'"%(session['advisor'])
-    res=select(qry)
-    
-    if res:
-        userid=res[0]['sender_id']
-        qry2="select * from chat where (sender_type='user' and receiver_id='%s' and receiver_type='advisor') or (sender_type='advisor' and sender_id='%s' and receiver_type='user')"%(session['advisor'],session['advisor'])
-        res2=select(qry2)
-        if res2:
-            data['view']=res2
     else:
         return '''<script>alert("no messages found");window.location="/advisor_home"</script>'''
     if 'submit' in request.form:
