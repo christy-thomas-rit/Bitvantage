@@ -168,7 +168,3 @@ for config in file_configs:
     future_prices = forecast_future(config['file'], config['model'], config['scaler'], days_ahead=30)
     print(f"Forecasted Prices ({config['file']}):")
     print(future_prices)
-for config in file_configs:
-    future_prices = forecast_future(config['file'], config['model'], config['scaler'], days_ahead=30)
-    print(f"Forecasted Prices ({config['file']}):")
-    print(future_prices)
